@@ -4,12 +4,12 @@ setup(
     name='wn_treecode',
     packages=['wn_treecode'],
     ext_modules=[
-        CUDAExtension('wn_treecode._cuda', [
-            'wn_treecode/wn_treecode_cuda/wn_treecode_cuda_torch_interface.cu',
-            'wn_treecode/wn_treecode_cuda/wn_treecode_cuda_kernels.cu',
-        ],
-        extra_compile_args={'cxx': ['-O3'],
-                            'nvcc': ['-O3']}),
+        # CUDAExtension('wn_treecode._cuda', [
+        #     'wn_treecode/wn_treecode_cuda/wn_treecode_cuda_torch_interface.cu',
+        #     'wn_treecode/wn_treecode_cuda/wn_treecode_cuda_kernels.cu',
+        # ],
+        # extra_compile_args={'cxx': ['-O3'],
+        #                     'nvcc': ['-O3']}),
 
         CppExtension('wn_treecode._cpu', [
             'wn_treecode/wn_treecode_cpu/wn_treecode_cpu_torch_interface.cpp',

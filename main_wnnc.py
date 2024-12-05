@@ -6,6 +6,7 @@ from tqdm import tqdm
 import numpy as np
 import torch
 import torch.nn.functional as F
+import math
 
 import wn_treecode
 
@@ -80,8 +81,8 @@ with torch.no_grad():
     bar = tqdm(range(args.iters)) if args.tqdm else range(args.iters)
 
     for i in bar:
-        width_scale = wsmin + ((args.iters-1-i) / ((args.iters-1))) * (wsmax - wsmin)
-        # width_scale = args.wsmin + 0.5 * (args.wsmax - args.wsmin) * (1 + math.cos(i/(args.iters-1) * math.pi))
+        # width_scale = wsmin + ((args.iters-1-i) / ((args.iters-1))) * (wsmax - wsmin)
+        width_scale = args.wsmin + 0.5 * (args.wsmax - args.wsmin) * (1 + math.cos(i/(args.iters-1) * math.pi))
         
         # grad step
         A_mu = wn_func.forward_A(normals, widths * width_scale)
